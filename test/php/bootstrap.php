@@ -1,6 +1,6 @@
 <?php
 /**
- * PHPUnit bootstrap file for the GatherPress Cache Invalidation Hooks.
+ * PHPUnit bootstrap file for the GatherPress References.
  *
  * Supports both wp-env and local WordPress test environments.
  * Requires GatherPress to be installed and activated in the test environment.
