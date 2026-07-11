@@ -159,7 +159,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function generate_demo_data(): void {
-		$config_manager   = new Config_Manager();
+		$config_manager   = new \GatherPress\References\Config_Manager();
 		$configs          = $config_manager->get_all_configs();
 
 		if ( empty( $configs ) ) {
