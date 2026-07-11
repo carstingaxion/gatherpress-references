@@ -8,7 +8,7 @@ Customize the human-readable labels for each reference type displayed in heading
 Override existing label
 ```php
 add_filter( 'gatherpress_references_type_labels', function( $labels ) {
- $labels['_gatherpress-award'] = __( 'Prizes & Honours', 'textdomain' );
+ $labels['gatherpress_award'] = __( 'Prizes & Honours', 'textdomain' );
  return $labels;
 } );
 ```
@@ -21,9 +21,9 @@ add_filter( 'gatherpress_references_type_labels', function( $labels ) {
     $locale = get_locale();
 
     if ( $locale === 'de_DE' ) {
-        $labels['_gatherpress-client'] = 'Gastspiele & Kunden';
-        $labels['_gatherpress-festival'] = 'Festivals';
-        $labels['_gatherpress-award'] = 'Auszeichnungen';
+        $labels['gatherpress_client'] = 'Gastspiele & Kunden';
+        $labels['gatherpress_festival'] = 'Festivals';
+        $labels['gatherpress_award'] = 'Auszeichnungen';
     }
 
     return $labels;
