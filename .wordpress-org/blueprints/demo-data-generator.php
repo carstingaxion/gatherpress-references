@@ -214,13 +214,13 @@ class Plugin {
 		);
 
 		// Resolve production slugs to shadow-taxonomy term IDs.
-		// The shadow taxonomy is created by gatherpress-productions; its terms
-		// share the same slugs as the production posts.
+		// GatherPress shadow taxonomy terms carry a leading underscore in their
+		// slug (e.g. production slug 'the-glass-horizon' → term slug '_the-glass-horizon').
 		$ref_term_ids   = array();
 		$ref_term_names = array();
 		if ( ! empty( $config['ref_tax'] ) && taxonomy_exists( $config['ref_tax'] ) ) {
 			foreach ( $production_slugs as $slug ) {
-				$term = get_term_by( 'slug', $slug, $config['ref_tax'] );
+				$term = get_term_by( 'slug', '_' . $slug, $config['ref_tax'] );
 				if ( $term instanceof \WP_Term ) {
 					$ref_term_ids[]                   = $term->term_id;
 					$ref_term_names[ $term->term_id ] = $term->name;
