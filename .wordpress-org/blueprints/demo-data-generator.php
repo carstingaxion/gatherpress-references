@@ -345,6 +345,7 @@ class Plugin {
 		}
 
 		// Clear cache after generating demo data.
+		$gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
 		$gatherpress_references_plugin->clear_all_caches();
 	}
 
@@ -383,7 +384,7 @@ class Plugin {
 		}
 
 		// Delete demo terms from all configured taxonomies.
-		$taxonomies = $gatherpress_references_plugin->get_all_taxonomies();
+		$taxonomies = ( new \GatherPress\References\Config_Manager() )->get_all_taxonomies();
 		
 		foreach ( $taxonomies as $taxonomy ) {
 			$demo_terms = get_terms(
