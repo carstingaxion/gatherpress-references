@@ -35,7 +35,7 @@ export default function useConfig( { postType, setAttributes } ) {
 		}
 
 		return postTypes.filter( ( type ) => {
-			return type.supports && type.supports.gatherpress-references;
+			return type.supports && type.supports[ 'gatherpress-references' ];
 		} );
 	}, [] );
 
@@ -78,7 +78,7 @@ export default function useConfig( { postType, setAttributes } ) {
 			}
 
 			const referencesSupport =
-				postTypeObject.supports.gatherpress-references;
+				postTypeObject.supports[ 'gatherpress-references' ];
 
 			if ( ! referencesSupport ) {
 				return null;
