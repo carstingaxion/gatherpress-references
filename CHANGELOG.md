@@ -2,7 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/carstingaxion/gatherpress-references/compare/0.2.1...HEAD)
+## [Unreleased](https://github.com/carstingaxion/gatherpress-references/compare/0.2.2...HEAD)
+
+## [0.2.2](https://github.com/carstingaxion/gatherpress-references/compare/0.2.1...0.2.2) - 2026-07-11
+
+- Consolidate taxonomies ([#92](https://github.com/carstingaxion/gatherpress-references/pull/92))
+
+### Dependency Updates & Maintenance
+
+- Bump actions/checkout from 4 to 7 ([#85](https://github.com/carstingaxion/gatherpress-references/pull/85))
 
 ## [0.2.1](https://github.com/carstingaxion/gatherpress-references/compare/0.2.0...0.2.1) - 2026-04-03
 
