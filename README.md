@@ -3,7 +3,7 @@
 **Contributors:** carstenbach & WordPress Telex  
 **Tags:** block, references, theater, events  
 **Tested up to:** 6.8  
-**Stable tag:** 0.2.2  
+**Stable tag:** 0.2.3  
 **Requires Plugins:**  gatherpress  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
