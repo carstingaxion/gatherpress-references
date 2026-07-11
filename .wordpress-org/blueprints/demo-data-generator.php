@@ -221,9 +221,9 @@ class Plugin {
 
 		// Create client terms.
 		$client_ids = array();
-		if ( in_array( '_gatherpress-client', $config['ref_types'], true ) && taxonomy_exists( '_gatherpress-client' ) ) {
+		if ( in_array( 'gatherpress_client', $config['ref_types'], true ) && taxonomy_exists( 'gatherpress_client' ) ) {
 			foreach ( $clients as $client ) {
-				$term = wp_insert_term( $client, '_gatherpress-client' );
+				$term = wp_insert_term( $client, 'gatherpress_client' );
 				if ( ! is_wp_error( $term ) ) {
 					$client_ids[] = $term['term_id'];
 					update_term_meta( $term['term_id'], '_demo_data', '1' );
@@ -233,9 +233,9 @@ class Plugin {
 
 		// Create festival terms.
 		$festival_ids = array();
-		if ( in_array( '_gatherpress-festival', $config['ref_types'], true ) && taxonomy_exists( '_gatherpress-festival' ) ) {
+		if ( in_array( 'gatherpress_festival', $config['ref_types'], true ) && taxonomy_exists( 'gatherpress_festival' ) ) {
 			foreach ( $festivals as $festival ) {
-				$term = wp_insert_term( $festival, '_gatherpress-festival' );
+				$term = wp_insert_term( $festival, 'gatherpress_festival' );
 				if ( ! is_wp_error( $term ) ) {
 					$festival_ids[] = $term['term_id'];
 					update_term_meta( $term['term_id'], '_demo_data', '1' );
@@ -245,9 +245,9 @@ class Plugin {
 
 		// Create award terms.
 		$award_ids = array();
-		if ( in_array( '_gatherpress-award', $config['ref_types'], true ) && taxonomy_exists( '_gatherpress-award' ) ) {
+		if ( in_array( 'gatherpress_award', $config['ref_types'], true ) && taxonomy_exists( 'gatherpress_award' ) ) {
 			foreach ( $awards as $award ) {
-				$term = wp_insert_term( $award, '_gatherpress-award' );
+				$term = wp_insert_term( $award, 'gatherpress_award' );
 				if ( ! is_wp_error( $term ) ) {
 					$award_ids[] = $term['term_id'];
 					update_term_meta( $term['term_id'], '_demo_data', '1' );
@@ -314,19 +314,19 @@ class Plugin {
 					}
 					// Remove duplicates.
 					$selected_clients = array_unique( $selected_clients );
-					wp_set_object_terms( $post_id, $selected_clients, '_gatherpress-client', false );
+					wp_set_object_terms( $post_id, $selected_clients, 'gatherpress_client', false );
 				}
 
 				// 40% chance of festival participation (30-70 range).
 				if ( $rand > 30 && $rand < 70 && ! empty( $festival_ids ) ) {
 					$selected_festival = $festival_ids[ array_rand( $festival_ids ) ];
-					wp_set_object_terms( $post_id, $selected_festival, '_gatherpress-festival', false );
+					wp_set_object_terms( $post_id, $selected_festival, 'gatherpress_festival', false );
 				}
 
 				// 40% chance of award (60-100 range).
 				if ( $rand > 60 && ! empty( $award_ids ) ) {
 					$selected_award = $award_ids[ array_rand( $award_ids ) ];
-					wp_set_object_terms( $post_id, $selected_award, '_gatherpress-award', false );
+					wp_set_object_terms( $post_id, $selected_award, 'gatherpress_award', false );
 				}
 			}
 		}

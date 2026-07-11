@@ -101,7 +101,7 @@ class CacheManagerTest extends WP_UnitTestCase {
 		$cache_key = $this->cache_manager->get_cache_key( 'gatherpress_event', 1, 2024, 'all' );
 		$data      = array(
 			'2024' => array(
-				'_gatherpress-client' => array( 'Client A', 'Client B' ),
+				'gatherpress_client' => array( 'Client A', 'Client B' ),
 			),
 		);
 
@@ -118,7 +118,7 @@ class CacheManagerTest extends WP_UnitTestCase {
 		$cache_key = $this->cache_manager->get_cache_key( 'gatherpress_event', 1, 2024, 'all' );
 		$data      = array(
 			'2024' => array(
-				'_gatherpress-client' => array( 'Client A' ),
+				'gatherpress_client' => array( 'Client A' ),
 			),
 		);
 

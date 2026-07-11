@@ -277,8 +277,8 @@ class Plugin {
  */
 function register_post_type_support(): void {
 	$config = array(
-		'ref_tax'   => 'gatherpress-production',
-		'ref_types' => array( '_gatherpress-client', '_gatherpress-festival', '_gatherpress-award' ),
+		'ref_tax'   => '_gatherpress_play',
+		'ref_types' => array( 'gatherpress_client', 'gatherpress_festival', 'gatherpress_award' ),
 	);
 
 	add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );

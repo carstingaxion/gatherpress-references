@@ -11,8 +11,8 @@ The plugin extends GatherPress by registering taxonomies and using post type sup
 ```php
 // Configure which taxonomies to use via post type support
 $config = array(
-    'ref_tax'   => 'gatherpress-production',  // The main reference taxonomy
-    'ref_types' => array( '_gatherpress-client', '_gatherpress-festival', '_gatherpress-award' ),
+    'ref_tax'   => '_gatherpress_play',  // The main reference taxonomy
+    'ref_types' => array( 'gatherpress_client', 'gatherpress_festival', 'gatherpress_award' ),
 );
 add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 ```
@@ -83,14 +83,14 @@ Results are organized and cached in a nested structure:
 ```php
 [
     '2024' => [
-        '_gatherpress-client' => ['Client 1', 'Client 2'],
-        '_gatherpress-festival' => ['Festival 1'],
-        '_gatherpress-award' => ['Award 1', 'Award 2']
+        'gatherpress_client' => ['Client 1', 'Client 2'],
+        'gatherpress_festival' => ['Festival 1'],
+        'gatherpress_award' => ['Award 1', 'Award 2']
     ],
     '2023' => [
-        '_gatherpress-client' => ['Client 3'],
-        '_gatherpress-festival' => [],
-        '_gatherpress-award' => ['Award 3']
+        'gatherpress_client' => ['Client 3'],
+        'gatherpress_festival' => [],
+        'gatherpress_award' => ['Award 3']
     ]
 ]
 ```

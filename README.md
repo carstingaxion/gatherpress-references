@@ -549,10 +549,10 @@ No, this plugin is specifically designed as a GatherPress add-on and requires Ga
 ### What taxonomies does this plugin create?
 
 By default, the plugin registers four custom taxonomies associated with the GatherPress `gatherpress_event` post type:
-- `gatherpress-production`: Hierarchical taxonomy for productions (the default reference taxonomy)
-- `_gatherpress-client`: Clients
-- `_gatherpress-festival`: Festival participations
-- `_gatherpress-award`: Awards received
+- `_gatherpress_play`: Hierarchical taxonomy for productions (the default reference taxonomy)
+- `gatherpress_client`: Clients
+- `gatherpress_festival`: Festival participations
+- `gatherpress_award`: Awards received
 
 These work alongside GatherPress's existing event taxonomies and can be customized via post type support configuration.
 
