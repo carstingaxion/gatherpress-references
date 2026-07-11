@@ -110,12 +110,12 @@ class Plugin {
 				<h2><?php esc_html_e( 'Generate Demo Data', 'gatherpress-references' ); ?></h2>
 				<p><?php esc_html_e( 'This will create:', 'gatherpress-references' ); ?></p>
 				<ul style="list-style: disc; margin-left: 20px;">
-					<li><?php esc_html_e( '5  reference terms (theater productions)', 'gatherpress-references' ); ?></li>
-					<li><?php esc_html_e( '20 GatherPress event posts', 'gatherpress-references' ); ?></li>
+					<li><?php esc_html_e( '20 GatherPress event posts linked to existing productions', 'gatherpress-references' ); ?></li>
 					<li><?php esc_html_e( '8 client terms', 'gatherpress-references' ); ?></li>
 					<li><?php esc_html_e( '6 festival terms', 'gatherpress-references' ); ?></li>
 					<li><?php esc_html_e( '6 award terms', 'gatherpress-references' ); ?></li>
 				</ul>
+				<p><strong><?php esc_html_e( 'Requires:', 'gatherpress-references' ); ?></strong> <?php esc_html_e( 'Run the GatherPress Productions demo data generator first — reference terms (productions) are read from its output, not created here.', 'gatherpress-references' ); ?></p>
 				<form method="post" style="margin-top: 20px;">
 					<?php wp_nonce_field( 'gatherpress_references_demo_data' ); ?>
 					<button type="submit" name="generate_demo_data" class="button button-primary">
@@ -170,9 +170,17 @@ class Plugin {
 		$post_type = array_key_first( $configs );
 		$config    = $configs[ $post_type ];
 		
-		// Sample reference taxonomy term names (theater productions).
-		$ref_terms = array( 'Hamlet', 'Romeo and Juliet', 'A Midsummer Night\'s Dream', 'Macbeth', 'The Tempest' );
-		
+		// The productions demo creates posts with these exact slugs.
+		// Resolve them to term IDs via the shadow taxonomy so we can assign
+		// them to events — we never create our own production posts here.
+		$production_slugs = array(
+			'the-glass-horizon',
+			'echoes-of-verona',
+			'midnight-in-dresden',
+			'the-last-monologue',
+			'carnival-of-shadows',
+		);
+
 		// Sample client names from major theater cities.
 		$clients = array(
 			'Royal Theater London',
@@ -205,15 +213,17 @@ class Plugin {
 			'Innovation in Theatre Award',
 		);
 
-		// Create reference taxonomy terms and store IDs.
-		$ref_term_ids = array();
+		// Resolve production slugs to shadow-taxonomy term IDs.
+		// The shadow taxonomy is created by gatherpress-productions; its terms
+		// share the same slugs as the production posts.
+		$ref_term_ids   = array();
+		$ref_term_names = array();
 		if ( ! empty( $config['ref_tax'] ) && taxonomy_exists( $config['ref_tax'] ) ) {
-			foreach ( $ref_terms as $ref_term ) {
-				$term = wp_insert_term( $ref_term, $config['ref_tax'] );
-				if ( ! is_wp_error( $term ) ) {
-					$ref_term_ids[] = $term['term_id'];
-					// Mark as demo data for cleanup.
-					update_term_meta( $term['term_id'], '_demo_data', '1' );
+			foreach ( $production_slugs as $slug ) {
+				$term = get_term_by( 'slug', $slug, $config['ref_tax'] );
+				if ( $term instanceof \WP_Term ) {
+					$ref_term_ids[]                   = $term->term_id;
+					$ref_term_names[ $term->term_id ] = $term->name;
 				}
 			}
 		}
@@ -261,11 +271,16 @@ class Plugin {
 			$month    = wp_rand( 1, 12 );
 			$day      = wp_rand( 1, 28 );
 			$date     = sprintf( '%04d-%02d-%02d', $year, $month, $day );
-			$ref_term = $ref_terms[ array_rand( $ref_terms ) ];
+			$selected_ref_id = ! empty( $ref_term_ids )
+				? $ref_term_ids[ array_rand( $ref_term_ids ) ]
+				: 0;
+			$ref_label = ( $selected_ref_id && isset( $ref_term_names[ $selected_ref_id ] ) )
+				? $ref_term_names[ $selected_ref_id ]
+				: 'Event';
 
 			$event_data = array(
-				'post_title'   => $ref_term . ' - Event ' . ( $i + 1 ),
-				'post_content' => 'Demo event for ' . $ref_term . '.',
+				'post_title'   => $ref_label . ' - Event ' . ( $i + 1 ),
+				'post_content' => 'Demo event for ' . $ref_label . '.',
 				'post_status'  => 'publish',
 				'post_type'    => $post_type,
 				'post_date'    => $date . ' 19:00:00',
@@ -294,10 +309,9 @@ class Plugin {
 					);
 				}
 
-				// Assign reference taxonomy term by term_id.
-				if ( ! empty( $ref_term_ids ) ) {
-					$selected_ref_term = $ref_term_ids[ array_rand( $ref_term_ids ) ];
-					wp_set_object_terms( $post_id, $selected_ref_term, $config['ref_tax'], false );
+				// Assign the pre-resolved production term (from the productions demo).
+				if ( $selected_ref_id ) {
+					wp_set_object_terms( $post_id, $selected_ref_id, $config['ref_tax'], false );
 				}
 
 				// Use randomization to create varied reference patterns.

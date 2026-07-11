@@ -59,6 +59,28 @@
     {
       "step": "installPlugin",
       "pluginData": {
+          "resource": "url",
+          "url": "https://github.com/carstingaxion/gatherpress-productions/releases/latest/download/gatherpress-productions.zip"
+      },
+      "options": {
+          "activate": true
+      }
+    },
+		{
+			"step": "writeFile",
+			"path": "/tmp/demo-data.php",
+			"data": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-productions/main/.wordpress-org/blueprints/demo-data.php"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require '/tmp/demo-data.php';"
+		},
+    {
+      "step": "installPlugin",
+      "pluginData": {
         "resource": "url",
         "url": "https://github.com/carstingaxion/gatherpress-references/releases/latest/download/gatherpress-references.zip"
       },
