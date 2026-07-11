@@ -2,7 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/carstingaxion/gatherpress-references/compare/0.2.2...HEAD)
+## [Unreleased](https://github.com/carstingaxion/gatherpress-references/compare/0.2.3...HEAD)
+
+## [0.2.3](https://github.com/carstingaxion/gatherpress-references/compare/0.2.2...0.2.3) - 2026-07-11
+
+* No changes
+* only Playground updates
 
 ## [0.2.2](https://github.com/carstingaxion/gatherpress-references/compare/0.2.1...0.2.2) - 2026-07-11
 
