@@ -159,9 +159,9 @@ class Plugin {
 	 * @return void
 	 */
 	public function generate_demo_data(): void {
-		$gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
-		$configs                       = $gatherpress_references_plugin->get_all_configs();
-		
+		$config_manager   = new Config_Manager();
+		$configs          = $config_manager->get_all_configs();
+
 		if ( empty( $configs ) ) {
 			return;
 		}
