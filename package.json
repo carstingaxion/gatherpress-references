@@ -19,6 +19,8 @@
 	},
 	"main": "build/index.js",
 	"devDependencies": {
+		"@testing-library/react": "^16.3.2",
+		"@wordpress/block-editor": "^15.16.0",
 		"@wordpress/env": "^11.3.0",
 		"@wordpress/i18n": "^6.16.0",
 		"@wordpress/icons": "^12.1.0",
@@ -47,6 +49,9 @@
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop",
 		"env:destroy": "wp-env destroy",
+		"test:js": "wp-scripts test-unit-js --config jest.config.js",
+		"test:js:watch": "wp-scripts test-unit-js --config jest.config.js --watch",
+		"test:js:coverage": "wp-scripts test-unit-js --config jest.config.js --coverage",
 		"pretest:php": "wp-env start",
 		"test:php": "wp-env run tests-cli --env-cwd='wp-content/plugins/gatherpress-references' bash -c 'WP_TESTS_DIR=/wordpress-phpunit vendor/bin/phpunit'",
 		"test:php:unit": "wp-env run tests-cli --env-cwd='wp-content/plugins/gatherpress-references' bash -c 'WP_TESTS_DIR=/wordpress-phpunit vendor/bin/phpunit --testsuite unit'",

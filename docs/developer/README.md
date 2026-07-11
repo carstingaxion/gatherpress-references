@@ -259,6 +259,67 @@ class MyIntegrationTest extends WP_UnitTestCase {
 }
 ```
 
+## JavaScript Tests (Jest)
+
+The block's editor-side JavaScript is tested with [Jest](https://jestjs.io/) via `@wordpress/scripts`. Tests cover hooks, components, and utility functions.
+
+### Running JavaScript Tests
+
+```bash
+# Run all JS tests
+npm run test:js
+
+# Run in watch mode (re-runs on file changes)
+npm run test:js:watch
+
+# Run with coverage report
+npm run test:js:coverage
+```
+
+### JavaScript Test Structure
+
+```
+test/
+└── js/
+    ├── __mocks__/
+    │   └── style-mock.js                 # Mock for CSS/SCSS imports
+    ├── edit.test.js                      # Integration test for main Edit component
+    ├── utils/
+    │   └── placeholder-data.test.js      # Pure function tests
+    ├── hooks/
+    │   ├── use-config.test.js            # Config loading hook
+    │   ├── use-type-order.test.js        # Type ordering logic
+    │   └── use-block-label.test.js       # Dynamic label generation
+    └── components/
+        ├── not-configured.test.js        # Error state rendering
+        ├── reference-inspector.test.js   # Sidebar controls
+        └── reference-preview.test.js     # Preview output & interactions
+```
+
+### Writing New JavaScript Tests
+
+Tests live under `test/js/` mirroring the `src/` structure, importing source files via relative paths (e.g., `../../../src/hooks/use-config`). WordPress dependencies are mocked at the module level:
+
+```js
+jest.mock( '@wordpress/data', () => ( {
+    useSelect: jest.fn(),
+} ) );
+```
+
+For component tests, use `@testing-library/react` (included with `@wordpress/scripts`):
+
+```js
+import { render, screen } from '@testing-library/react';
+import MyComponent from '../../../src/components/my-component';
+
+it( 'renders correctly', () => {
+    render( <MyComponent /> );
+    expect( screen.getByText( 'Hello' ) ).toBeInTheDocument();
+} );
+```
+
+---
+
 ### Troubleshooting
 
 #### "WordPress test library not found"
