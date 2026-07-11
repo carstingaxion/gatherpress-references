@@ -1,6 +1,6 @@
 {
 	"name": "gatherpress-references",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Display production references including clients, festivals and awards in a structured, chronological format.",
 	"author": "Carsten Bach & WordPress Telex",
 	"license": "GPL-2.0-or-later",
