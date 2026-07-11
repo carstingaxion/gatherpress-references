@@ -52,7 +52,7 @@ class Taxonomy_Manager {
 		foreach ( $configs as $post_type => $config ) {
 			// Register reference taxonomy.
 			if ( ! empty( $config['ref_tax'] ) &&
-				$config['ref_tax'] === 'gatherpress-production' &&
+				$config['ref_tax'] === '_gatherpress_play' &&
 				! taxonomy_exists( $config['ref_tax'] ) ) {
 				$this->register_reference_taxonomy( $post_type );
 			}
@@ -104,7 +104,7 @@ class Taxonomy_Manager {
 			'show_in_rest'       => true,
 		);
 
-		register_taxonomy( 'gatherpress-production', array( $post_type ), $args );
+		register_taxonomy( '_gatherpress_play', array( $post_type ), $args );
 	}
 
 	/**
@@ -128,7 +128,8 @@ class Taxonomy_Manager {
 			'public'             => false,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_admin_column'  => true,
+			'show_in_menu'       => false,
+			'show_admin_column'  => false,
 			'query_var'          => true,
 			'rewrite'            => false,
 			'show_in_rest'       => true,
@@ -146,7 +147,7 @@ class Taxonomy_Manager {
 	 */
 	private function get_taxonomy_config( string $taxonomy ): ?array {
 		$configs = array(
-			'_gatherpress-client'   => array(
+			'gatherpress_client'   => array(
 				'labels' => array(
 					'name'          => __( 'Clients', 'gatherpress-references' ),
 					'singular_name' => __( 'Client', 'gatherpress-references' ),
@@ -159,7 +160,7 @@ class Taxonomy_Manager {
 					'menu_name'     => __( 'Clients', 'gatherpress-references' ),
 				),
 			),
-			'_gatherpress-festival' => array(
+			'gatherpress_festival' => array(
 				'labels' => array(
 					'name'          => __( 'Festivals', 'gatherpress-references' ),
 					'singular_name' => __( 'Festival', 'gatherpress-references' ),
@@ -172,7 +173,7 @@ class Taxonomy_Manager {
 					'menu_name'     => __( 'Festivals', 'gatherpress-references' ),
 				),
 			),
-			'_gatherpress-award'    => array(
+			'gatherpress_award'    => array(
 				'labels' => array(
 					'name'          => __( 'Awards', 'gatherpress-references' ),
 					'singular_name' => __( 'Award', 'gatherpress-references' ),

@@ -25,7 +25,7 @@ import { useEffect, useMemo } from '@wordpress/element';
  */
 export default function useConfig( { postType, setAttributes } ) {
 	/**
-	 * Fetch all post types with gatherpress_references support
+	 * Fetch all post types with gatherpress-references support
 	 */
 	const supportedPostTypes = useSelect( ( select ) => {
 		const postTypes = select( 'core' ).getPostTypes( { per_page: -1 } );
@@ -35,7 +35,7 @@ export default function useConfig( { postType, setAttributes } ) {
 		}
 
 		return postTypes.filter( ( type ) => {
-			return type.supports && type.supports.gatherpress_references;
+			return type.supports && type.supports[ 'gatherpress-references' ];
 		} );
 	}, [] );
 
@@ -78,7 +78,7 @@ export default function useConfig( { postType, setAttributes } ) {
 			}
 
 			const referencesSupport =
-				postTypeObject.supports.gatherpress_references;
+				postTypeObject.supports[ 'gatherpress-references' ];
 
 			if ( ! referencesSupport ) {
 				return null;

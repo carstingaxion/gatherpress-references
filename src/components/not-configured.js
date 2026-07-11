@@ -2,7 +2,7 @@
  * Not Configured Component
  *
  * Displays an error state when the block is not properly configured
- * with a post type that supports gatherpress_references.
+ * with a post type that supports gatherpress-references.
  *
  * @since 0.1.0
  */
@@ -34,7 +34,7 @@ export default function NotConfigured( { blockProps, supportedPostTypes } ) {
 				>
 					<Notice status="warning" isDismissible={ false }>
 						{ __(
-							'References block requires a post type with gatherpress_references support.',
+							'References block requires a post type with gatherpress-references support.',
 							'gatherpress-references'
 						) }
 					</Notice>
@@ -44,7 +44,7 @@ export default function NotConfigured( { blockProps, supportedPostTypes } ) {
 				<Notice status="warning" isDismissible={ false }>
 					<p>
 						{ __(
-							'This block requires a post type with gatherpress_references support configured.',
+							'This block requires a post type with gatherpress-references support configured.',
 							'gatherpress-references'
 						) }
 					</p>

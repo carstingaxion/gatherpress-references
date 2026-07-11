@@ -29,17 +29,17 @@ class Config_Manager {
 	 * @return ?array{ref_tax: string, ref_types: array<int, string>} Configuration array or null.
 	 */
 	public function get_config( string $post_type ): ?array {
-		if ( ! post_type_supports( $post_type, 'gatherpress_references' ) ) {
+		if ( ! post_type_supports( $post_type, 'gatherpress-references' ) ) {
 			return null;
 		}
 
 		$support = get_all_post_type_supports( $post_type );
 
-		if ( ! isset( $support['gatherpress_references'] ) ) {
+		if ( ! isset( $support['gatherpress-references'] ) ) {
 			return null;
 		}
 
-		$raw = $support['gatherpress_references'];
+		$raw = $support['gatherpress-references'];
 
 		// Ensure it's a non-empty array with index 0.
 		if ( ! is_array( $raw ) || ! isset( $raw[0] ) || ! is_array( $raw[0] ) ) {
@@ -77,7 +77,7 @@ class Config_Manager {
 	 * @return array<string, array{ref_tax: string, ref_types: array<int, string>}> Array of post_type => config.
 	 */
 	public function get_all_configs(): array {
-		$post_types = get_post_types_by_support( 'gatherpress_references' );
+		$post_types = get_post_types_by_support( 'gatherpress-references' );
 		$configs    = array();
 
 		if ( empty( $post_types ) ) {

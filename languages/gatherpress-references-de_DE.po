@@ -7,7 +7,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/gatherpress-"
 "references\n"
 "POT-Creation-Date: 2026-04-03T04:46:18+02:00\n"
-"PO-Revision-Date: 2026-04-03 04:56+0200\n"
+"PO-Revision-Date: 2026-07-11 12:45+0200\n"
 "Last-Translator: Carsten Bach\n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -182,18 +182,18 @@ msgstr "Referenz-Einstellungen"
 
 #: build/index.js:113 src/components/not-configured.js:36 build/index.js:54
 msgid ""
-"References block requires a post type with gatherpress_references support."
+"References block requires a post type with gatherpress-references support."
 msgstr ""
-"Der Referenzen-Block erfordert einen Inhaltstyp mit gatherpress_references-"
+"Der Referenzen-Block erfordert einen Inhaltstyp mit gatherpress-references-"
 "Unterstützung."
 
 #: build/index.js:122 src/components/not-configured.js:46 build/index.js:64
 msgid ""
-"This block requires a post type with gatherpress_references support "
+"This block requires a post type with gatherpress-references support "
 "configured."
 msgstr ""
-"Dieser Block erfordert einen Inhaltstyp mit konfigurierter "
-"gatherpress_references-Unterstützung."
+"Dieser Block erfordert einen Inhaltstyp mit konfigurierter gatherpress-"
+"references-Unterstützung."
 
 #: build/index.js:125 src/components/not-configured.js:54 build/index.js:72
 msgid "Supported post types:"

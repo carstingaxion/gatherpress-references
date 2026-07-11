@@ -2,7 +2,7 @@
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
   "landingPage": "/wp-admin/post.php?post=4&action=edit",
   "preferredVersions": {
-    "php": "8.2",
+    "php": "8.4",
     "wp": "latest"
   },
   "features": {
@@ -21,7 +21,7 @@
     {
       "step": "defineWpConfigConsts",
       "consts": {
-          "GATHERPRESS_ALPHA_VERSION": 1
+        "GATHERPRESS_ALPHA_VERSION": 1
       }
     },
     {
@@ -42,32 +42,28 @@
     {
       "step": "updateUserMeta",
       "meta": {
-          "admin_color": "modern"
+        "admin_color": "modern"
       },
       "userId": 1
     },
     {
       "step": "installPlugin",
       "pluginData": {
-          "resource": "wordpress.org\/plugins",
-          "slug": "gatherpress"
+        "resource": "wordpress.org\/plugins",
+        "slug": "gatherpress"
       },
       "options": {
-          "activate": true
+        "activate": true
       }
     },
     {
       "step": "installPlugin",
       "pluginData": {
-        "resource": "git:directory",
-        "url": "https://github.com/carstingaxion/gatherpress-references",
-        "ref": "HEAD"
+        "resource": "url",
+        "url": "https://github.com/carstingaxion/gatherpress-references/releases/latest/download/gatherpress-references.zip"
       },
       "options": {
         "activate": true
-      },
-      "progress": {
-        "caption": "Installing plugin from GitHub: carstingaxion/gatherpress-references"
       }
     },
     {
@@ -75,7 +71,7 @@
       "path": "/wordpress/wp-content/plugins/gatherpress-references-demo-data-generator.php",
       "data": {
         "resource": "url",
-        "url": "https://gist.githubusercontent.com/carstingaxion/fd8b833d935f69b23e6a081b12a5937a/raw/2c33ebd7588ac83a0a29e576a43e342882b22855/gatherpress-references-demo-data-generator.php"
+        "url": "https://raw.githubusercontent.com/carstingaxion/gatherpress-references/main/.wordpress-org/blueprints/demo-data-generator.php"
       }
     },
     {

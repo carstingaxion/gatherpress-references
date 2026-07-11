@@ -151,7 +151,7 @@ add_action( 'registered_post_type_gatherpress_event', function() {
         'ref_types' => array( 'gatherpress_venue' ), // Sub-reference: Venues
     );
     
-    add_post_type_support( 'gatherpress_event', 'gatherpress_references', $config );
+    add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 } );
 ```
 
@@ -184,7 +184,7 @@ add_action( 'registered_post_type_gatherpress_event', function() {
         'ref_types' => array( 'gatherpress_topic' ), // Sub-reference: Topics
     );
     
-    add_post_type_support( 'gatherpress_event', 'gatherpress_references', $config );
+    add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 } );
 ```
 
@@ -224,7 +224,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'post_tag' ),     // Sub-reference: Tags
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -273,7 +273,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'post_tag', 'category' ), // Topics & Categories
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -345,7 +345,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'dietary', 'meal_type' ), // Dietary & Meal types
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -426,7 +426,7 @@ add_action( 'registered_post_type_course', function() {
         'ref_types' => array( 'skill_level', 'instructor' ),
     );
     
-    add_post_type_support( 'course', 'gatherpress_references', $config );
+    add_post_type_support( 'course', 'gatherpress-references', $config );
 });
 ```
 
@@ -493,7 +493,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'podcast_guest', 'podcast_genre' ),
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -549,10 +549,10 @@ No, this plugin is specifically designed as a GatherPress add-on and requires Ga
 ### What taxonomies does this plugin create?
 
 By default, the plugin registers four custom taxonomies associated with the GatherPress `gatherpress_event` post type:
-- `gatherpress-production`: Hierarchical taxonomy for productions (the default reference taxonomy)
-- `_gatherpress-client`: Clients
-- `_gatherpress-festival`: Festival participations
-- `_gatherpress-award`: Awards received
+- `_gatherpress_play`: Hierarchical taxonomy for productions (the default reference taxonomy)
+- `gatherpress_client`: Clients
+- `gatherpress_festival`: Festival participations
+- `gatherpress_award`: Awards received
 
 These work alongside GatherPress's existing event taxonomies and can be customized via post type support configuration.
 

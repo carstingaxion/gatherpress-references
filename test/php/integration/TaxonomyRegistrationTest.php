@@ -21,7 +21,7 @@ use WP_UnitTestCase;
 class TaxonomyRegistrationTest extends WP_UnitTestCase {
 
 	/**
-	 * Test that the gatherpress-production taxonomy exists
+	 * Test that the _gatherpress_play taxonomy exists
 	 * after the plugin is loaded (if GatherPress event type is registered).
 	 */
 	public function test_production_taxonomy_exists() {
@@ -29,7 +29,7 @@ class TaxonomyRegistrationTest extends WP_UnitTestCase {
 			$this->markTestSkipped( 'GatherPress event post type not registered.' );
 		}
 
-		$this->assertTrue( taxonomy_exists( 'gatherpress-production' ) );
+		$this->assertTrue( taxonomy_exists( '_gatherpress_play' ) );
 	}
 
 	/**
@@ -40,7 +40,7 @@ class TaxonomyRegistrationTest extends WP_UnitTestCase {
 			$this->markTestSkipped( 'GatherPress event post type not registered.' );
 		}
 
-		$this->assertTrue( taxonomy_exists( '_gatherpress-client' ) );
+		$this->assertTrue( taxonomy_exists( 'gatherpress_client' ) );
 	}
 
 	/**
@@ -51,7 +51,7 @@ class TaxonomyRegistrationTest extends WP_UnitTestCase {
 			$this->markTestSkipped( 'GatherPress event post type not registered.' );
 		}
 
-		$this->assertTrue( taxonomy_exists( '_gatherpress-festival' ) );
+		$this->assertTrue( taxonomy_exists( 'gatherpress_festival' ) );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class TaxonomyRegistrationTest extends WP_UnitTestCase {
 			$this->markTestSkipped( 'GatherPress event post type not registered.' );
 		}
 
-		$this->assertTrue( taxonomy_exists( '_gatherpress-award' ) );
+		$this->assertTrue( taxonomy_exists( 'gatherpress_award' ) );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class TaxonomyRegistrationTest extends WP_UnitTestCase {
 			$this->markTestSkipped( 'GatherPress event post type not registered.' );
 		}
 
-		$taxonomies = array( '_gatherpress-client', '_gatherpress-festival', '_gatherpress-award' );
+		$taxonomies = array( 'gatherpress_client', 'gatherpress_festival', 'gatherpress_award' );
 
 		foreach ( $taxonomies as $taxonomy_slug ) {
 			$taxonomy = get_taxonomy( $taxonomy_slug );
@@ -97,9 +97,9 @@ class TaxonomyRegistrationTest extends WP_UnitTestCase {
 		$this->assertNotNull( $config );
 		$this->assertArrayHasKey( 'ref_tax', $config );
 		$this->assertArrayHasKey( 'ref_types', $config );
-		$this->assertEquals( 'gatherpress-production', $config['ref_tax'] );
-		$this->assertContains( '_gatherpress-client', $config['ref_types'] );
-		$this->assertContains( '_gatherpress-festival', $config['ref_types'] );
-		$this->assertContains( '_gatherpress-award', $config['ref_types'] );
+		$this->assertEquals( '_gatherpress_play', $config['ref_tax'] );
+		$this->assertContains( 'gatherpress_client', $config['ref_types'] );
+		$this->assertContains( 'gatherpress_festival', $config['ref_types'] );
+		$this->assertContains( 'gatherpress_award', $config['ref_types'] );
 	}
 }

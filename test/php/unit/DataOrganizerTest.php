@@ -40,9 +40,9 @@ class DataOrganizerTest extends WP_UnitTestCase {
 	 */
 	public function test_sort_years_descending() {
 		$references = array(
-			'2022' => array( '_gatherpress-client' => array( 'Client A' ) ),
-			'2024' => array( '_gatherpress-client' => array( 'Client B' ) ),
-			'2023' => array( '_gatherpress-client' => array( 'Client C' ) ),
+			'2022' => array( 'gatherpress_client' => array( 'Client A' ) ),
+			'2024' => array( 'gatherpress_client' => array( 'Client B' ) ),
+			'2023' => array( 'gatherpress_client' => array( 'Client C' ) ),
 		);
 
 		$result = $this->data_organizer->sort_years( $references, 'desc' );
@@ -56,9 +56,9 @@ class DataOrganizerTest extends WP_UnitTestCase {
 	 */
 	public function test_sort_years_ascending() {
 		$references = array(
-			'2024' => array( '_gatherpress-client' => array( 'Client B' ) ),
-			'2022' => array( '_gatherpress-client' => array( 'Client A' ) ),
-			'2023' => array( '_gatherpress-client' => array( 'Client C' ) ),
+			'2024' => array( 'gatherpress_client' => array( 'Client B' ) ),
+			'2022' => array( 'gatherpress_client' => array( 'Client A' ) ),
+			'2023' => array( 'gatherpress_client' => array( 'Client C' ) ),
 		);
 
 		$result = $this->data_organizer->sort_years( $references, 'asc' );
@@ -82,11 +82,11 @@ class DataOrganizerTest extends WP_UnitTestCase {
 	public function test_sort_years_preserves_data() {
 		$references = array(
 			'2023' => array(
-				'_gatherpress-client'   => array( 'Client A', 'Client B' ),
-				'_gatherpress-festival' => array( 'Festival X' ),
+				'gatherpress_client'   => array( 'Client A', 'Client B' ),
+				'gatherpress_festival' => array( 'Festival X' ),
 			),
 			'2024' => array(
-				'_gatherpress-award' => array( 'Award 1' ),
+				'gatherpress_award' => array( 'Award 1' ),
 			),
 		);
 
@@ -94,8 +94,8 @@ class DataOrganizerTest extends WP_UnitTestCase {
 
 		$this->assertArrayHasKey( '2024', $result );
 		$this->assertArrayHasKey( '2023', $result );
-		$this->assertEquals( array( 'Award 1' ), $result['2024']['_gatherpress-award'] );
-		$this->assertEquals( array( 'Client A', 'Client B' ), $result['2023']['_gatherpress-client'] );
+		$this->assertEquals( array( 'Award 1' ), $result['2024']['gatherpress_award'] );
+		$this->assertEquals( array( 'Client A', 'Client B' ), $result['2023']['gatherpress_client'] );
 	}
 
 	/**
@@ -103,7 +103,7 @@ class DataOrganizerTest extends WP_UnitTestCase {
 	 */
 	public function test_sort_years_single_year() {
 		$references = array(
-			'2024' => array( '_gatherpress-client' => array( 'Client A' ) ),
+			'2024' => array( 'gatherpress_client' => array( 'Client A' ) ),
 		);
 
 		$result = $this->data_organizer->sort_years( $references, 'desc' );
@@ -118,17 +118,17 @@ class DataOrganizerTest extends WP_UnitTestCase {
 	public function test_sort_years_maintains_all_taxonomy_data() {
 		$references = array(
 			'2022' => array(
-				'_gatherpress-client'   => array( 'Client A' ),
-				'_gatherpress-festival' => array( 'Festival B' ),
-				'_gatherpress-award'    => array( 'Award C' ),
+				'gatherpress_client'   => array( 'Client A' ),
+				'gatherpress_festival' => array( 'Festival B' ),
+				'gatherpress_award'    => array( 'Award C' ),
 			),
 		);
 
 		$result = $this->data_organizer->sort_years( $references, 'asc' );
 
 		$this->assertCount( 3, $result['2022'] );
-		$this->assertArrayHasKey( '_gatherpress-client', $result['2022'] );
-		$this->assertArrayHasKey( '_gatherpress-festival', $result['2022'] );
-		$this->assertArrayHasKey( '_gatherpress-award', $result['2022'] );
+		$this->assertArrayHasKey( 'gatherpress_client', $result['2022'] );
+		$this->assertArrayHasKey( 'gatherpress_festival', $result['2022'] );
+		$this->assertArrayHasKey( 'gatherpress_award', $result['2022'] );
 	}
 }
