@@ -345,8 +345,7 @@ class Plugin {
 		}
 
 		// Clear cache after generating demo data.
-		$gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
-		$gatherpress_references_plugin->clear_all_caches();
+		\GatherPress\References\Plugin::get_instance()->get_cache_manager()->clear_all();
 	}
 
 	/**
@@ -359,8 +358,7 @@ class Plugin {
 	 * @return void
 	 */
 	private function delete_demo_data(): void {
-		$gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
-		$post_types                    = get_post_types_by_support( 'gatherpress-references' );
+		$post_types = get_post_types_by_support( 'gatherpress-references' );
 		
 		if ( empty( $post_types ) ) {
 			return;
@@ -405,7 +403,7 @@ class Plugin {
 		}
 
 		// Clear cache after cleanup.
-		$gatherpress_references_plugin->clear_all_caches();
+		\GatherPress\References\Plugin::get_instance()->get_cache_manager()->clear_all();
 	}
 }
 
@@ -496,5 +494,5 @@ function gatherpress_references_demodata_uninstall(): void {
 register_uninstall_hook( __FILE__, __NAMESPACE__ . '\gatherpress_references_demodata_uninstall' );
 
 
-// Initialize the singleton instance.
-Plugin::get_instance();
+// Initialize the demo plugin singleton.
+\GatherPress\ReferencesDemodata\Plugin::get_instance();
