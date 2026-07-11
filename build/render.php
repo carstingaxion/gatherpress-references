@@ -200,7 +200,7 @@ if ( ! class_exists( Block_Renderer::class ) ) {
 		 * @return ?array{ref_tax: string, ref_types: array<int, string>} Configuration or null.
 		 */
 		private function get_validated_config( string $post_type ): ?array {
-			if ( empty( $post_type ) || ! post_type_supports( $post_type, 'gatherpress_references' ) ) {
+			if ( empty( $post_type ) || ! post_type_supports( $post_type, 'gatherpress-references' ) ) {
 				return null;
 			}
 

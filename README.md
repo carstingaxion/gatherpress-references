@@ -151,7 +151,7 @@ add_action( 'registered_post_type_gatherpress_event', function() {
         'ref_types' => array( 'gatherpress_venue' ), // Sub-reference: Venues
     );
     
-    add_post_type_support( 'gatherpress_event', 'gatherpress_references', $config );
+    add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 } );
 ```
 
@@ -184,7 +184,7 @@ add_action( 'registered_post_type_gatherpress_event', function() {
         'ref_types' => array( 'gatherpress_topic' ), // Sub-reference: Topics
     );
     
-    add_post_type_support( 'gatherpress_event', 'gatherpress_references', $config );
+    add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 } );
 ```
 
@@ -224,7 +224,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'post_tag' ),     // Sub-reference: Tags
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -273,7 +273,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'post_tag', 'category' ), // Topics & Categories
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -345,7 +345,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'dietary', 'meal_type' ), // Dietary & Meal types
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 
@@ -426,7 +426,7 @@ add_action( 'registered_post_type_course', function() {
         'ref_types' => array( 'skill_level', 'instructor' ),
     );
     
-    add_post_type_support( 'course', 'gatherpress_references', $config );
+    add_post_type_support( 'course', 'gatherpress-references', $config );
 });
 ```
 
@@ -493,7 +493,7 @@ add_action( 'init', function() {
         'ref_types' => array( 'podcast_guest', 'podcast_genre' ),
     );
     
-    add_post_type_support( 'post', 'gatherpress_references', $config );
+    add_post_type_support( 'post', 'gatherpress-references', $config );
 }, 20 );
 ```
 

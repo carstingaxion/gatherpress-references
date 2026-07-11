@@ -178,13 +178,13 @@ msgstr ""
 #: build/index.js:113
 #: src/components/not-configured.js:36
 #: build/index.js:54
-msgid "References block requires a post type with gatherpress_references support."
+msgid "References block requires a post type with gatherpress-references support."
 msgstr ""
 
 #: build/index.js:122
 #: src/components/not-configured.js:46
 #: build/index.js:64
-msgid "This block requires a post type with gatherpress_references support configured."
+msgid "This block requires a post type with gatherpress-references support configured."
 msgstr ""
 
 #: build/index.js:125

@@ -14,7 +14,7 @@ $config = array(
     'ref_tax'   => 'gatherpress-production',  // The main reference taxonomy
     'ref_types' => array( '_gatherpress-client', '_gatherpress-festival', '_gatherpress-award' ),
 );
-add_post_type_support( 'gatherpress_event', 'gatherpress_references', $config );
+add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 ```
 
 ## Block Attributes

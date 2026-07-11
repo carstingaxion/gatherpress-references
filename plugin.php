@@ -179,7 +179,7 @@ class Plugin {
 	 */
 	public function clear_cache_on_status_change( string $new_status, string $old_status, \WP_Post $post ): void {
 
-		if ( ! post_type_supports( $post->post_type, 'gatherpress_references' ) ) {
+		if ( ! post_type_supports( $post->post_type, 'gatherpress-references' ) ) {
 			return;
 		}
 
@@ -221,7 +221,7 @@ class Plugin {
 	public function clear_cache_on_term_relationship( int $object_id, array $terms, array $tt_ids, string $taxonomy ): void {
 		$post = get_post( $object_id );
 
-		if ( ! $post || ! post_type_supports( $post->post_type, 'gatherpress_references' ) || $post->post_status !== 'publish' ) {
+		if ( ! $post || ! post_type_supports( $post->post_type, 'gatherpress-references' ) || $post->post_status !== 'publish' ) {
 			return;
 		}
 
@@ -281,7 +281,7 @@ function register_post_type_support(): void {
 		'ref_types' => array( '_gatherpress-client', '_gatherpress-festival', '_gatherpress-award' ),
 	);
 
-	add_post_type_support( 'gatherpress_event', 'gatherpress_references', $config );
+	add_post_type_support( 'gatherpress_event', 'gatherpress-references', $config );
 }
 add_action( 'registered_post_type_gatherpress_event', __NAMESPACE__ . '\register_post_type_support', 9 );
 
