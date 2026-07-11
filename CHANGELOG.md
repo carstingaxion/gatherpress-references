@@ -2,7 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/carstingaxion/gatherpress-references/compare/0.2.3...HEAD)
+## [Unreleased](https://github.com/carstingaxion/gatherpress-references/compare/0.2.4...HEAD)
+
+## [0.2.4](https://github.com/carstingaxion/gatherpress-references/compare/0.2.3...0.2.4) - 2026-07-11
+
+- Update hook docs automatically ([#96](https://github.com/carstingaxion/gatherpress-references/pull/96))
+- update packages
 
 ## [0.2.3](https://github.com/carstingaxion/gatherpress-references/compare/0.2.2...0.2.3) - 2026-07-11
 
