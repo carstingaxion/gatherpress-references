@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * GatherPress References Demodata Plugin
  *
- *
  * @since 0.1.0
  */
 class Plugin {
@@ -160,8 +159,8 @@ class Plugin {
 	 * @return void
 	 */
 	public function generate_demo_data(): void {
-        $gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
-		$configs = $gatherpress_references_plugin->get_all_configs();
+		$gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
+		$configs                       = $gatherpress_references_plugin->get_all_configs();
 		
 		if ( empty( $configs ) ) {
 			return;
@@ -345,8 +344,8 @@ class Plugin {
 	 * @return void
 	 */
 	private function delete_demo_data(): void {
-        $gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
-        $post_types = get_post_types_by_support( 'gatherpress-references' );
+		$gatherpress_references_plugin = \GatherPress\References\Plugin::get_instance();
+		$post_types                    = get_post_types_by_support( 'gatherpress-references' );
 		
 		if ( empty( $post_types ) ) {
 			return;
@@ -451,7 +450,7 @@ function gatherpress_references_demodata_uninstall(): void {
 				'taxonomy'   => $taxonomy,
 				'hide_empty' => false,
 				'fields'     => 'ids',
-                'meta_key'   => '_demo_data', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+				'meta_key'   => '_demo_data', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 			)
 		);
 
