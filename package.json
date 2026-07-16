@@ -19,10 +19,10 @@
 	},
 	"main": "build/index.js",
 	"devDependencies": {
-		"@wordpress/env": "^11.10.0",
-		"@wordpress/i18n": "^6.23.0",
-		"@wordpress/icons": "^15.1.0",
-		"@wordpress/scripts": "^32.6.0"
+		"@wordpress/env": "^11.11.0",
+		"@wordpress/i18n": "^6.24.0",
+		"@wordpress/icons": "^15.2.0",
+		"@wordpress/scripts": "^33.0.0"
 	},
 	"scripts": {
 		"build": "wp-scripts build --webpack-copy-php",
